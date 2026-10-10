@@ -30,7 +30,7 @@ export default function Home() {
               <Link className="btn btn-ghost-light" href={'/leistungen/'}>Unsere Leistungen</Link>
             </div>
             <ul className="hero-facts">
-              <li><strong>10+ Jahre</strong> Softwareentwicklung für sicherheitskritische Systeme</li>
+              <li><strong>15+ Jahre</strong> Softwareentwicklung für sicherheitskritische Systeme</li>
               <li><strong>Herstellerunabhängig</strong> ohne Provisionen oder Plattformbindung</li>
               <li><strong>Vom Sensor bis zur Cloud</strong> alles aus einer Hand</li>
             </ul>

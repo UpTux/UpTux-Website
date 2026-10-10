@@ -29,7 +29,7 @@ export default function Home() {
               <Link className="btn btn-ghost-light" href={'/en/services/'}>Our services</Link>
             </div>
             <ul className="hero-facts">
-              <li><strong>10+ years</strong> of software development for safety-critical systems</li>
+              <li><strong>15+ years</strong> of software development for safety-critical systems</li>
               <li><strong>Vendor-independent</strong> with no commissions or platform lock-in</li>
               <li><strong>From sensor to cloud</strong> everything from one partner</li>
             </ul>
