@@ -1,30 +1,32 @@
 # uptux.de
 
-Website der UpTux UG. React-Komponenten, die beim Build zu statischem HTML gerendert werden (eine HTML-Datei pro Seite), damit Suchmaschinen den vollständigen Inhalt sehen.
+Website der UpTux UG, gebaut mit **Next.js (App Router) und TypeScript**. Next.js rendert beim Build jede Seite zu fertigem HTML (`output: 'export'`), sodass Suchmaschinen den vollständigen Inhalt ohne JavaScript sehen. Deutsch ist die Standardsprache, Englisch liegt unter `/en/`.
 
 ## Entwicklung
 
 ```bash
 npm install
-npm run dev            # lokaler Entwicklungsserver
-npm run build          # statische Seite nach dist/
-npm run build:preview  # eine einzelne HTML-Datei zur Vorschau (dist-preview/)
+npm run dev              # Entwicklungsserver auf http://localhost:3000
+npm run typecheck        # TypeScript prüfen
+npm run build            # statische Seite für uptux.de nach out/
+npm run build:github-io  # Test-Build für jochngst.github.io/UpTux-Website (noindex)
 ```
 
 ## Aufbau
 
-- `src/pages/` Inhalte der einzelnen Seiten
-- `src/routes.js` URLs, Seitentitel und Meta-Beschreibungen (SEO)
-- `src/site.js` Firmendaten (Impressum, strukturierte Daten)
-- `src/components/Blocks.jsx` u. a. die Liste der Industrie-Protokolle
-- `scripts/prerender.mjs` erzeugt HTML je Seite, `sitemap.xml`, `robots.txt`, `CNAME`
+- `src/content/de/`, `src/content/en/` Inhalte der Seiten je Sprache
+- `src/app/(de)/…`, `src/app/(en)/en/…` Routen (je Sprache ein eigenes Root-Layout mit passendem `lang`)
+- `src/lib/paths.ts` URLs aller Seiten in beiden Sprachen (Grundlage für Sprachumschalter und hreflang)
+- `src/lib/seo.ts` Seitentitel, Meta-Beschreibungen, strukturierte Daten
+- `src/lib/i18n.ts` Texte für Navigation, Footer und Buttons
+- `src/lib/site.ts` Firmendaten (Impressum, strukturierte Daten)
+- `src/components/Blocks.tsx` wiederverwendbare Bausteine, u. a. die Liste der Industrie-Protokolle
+- `src/app/sitemap.ts`, `src/app/robots.ts` Sitemap und robots.txt
 
-Eine neue Seite: Komponente in `src/pages/` anlegen und in `src/routes.js` eintragen. Sitemap und Meta-Tags entstehen automatisch.
+Neue Seite: Inhalt in `src/content/<sprache>/` anlegen, URL in `src/lib/paths.ts` und Titel/Beschreibung in `src/lib/seo.ts` eintragen, Route unter `src/app/` anlegen (siehe bestehende `page.tsx`).
 
 ## Deployment
 
-Testphase: Die Seite läuft unter https://jochngst.github.io/UpTux-Website/ (Build mit `npm run build:github-io`, ohne Suchmaschinen-Indexierung). Für uptux.de wird mit `npm run build` gebaut.
+Jeder Push auf `main` baut die Seite per GitHub Actions (`.github/workflows/deploy.yml`) und veröffentlicht sie auf GitHub Pages (Einstellungen: Pages → Source: **GitHub Actions**).
 
-Aktuell liegt die gebaute Seite im Branch `gh-pages` (Repository-Einstellungen: Pages → Source: Deploy from a branch → `gh-pages` / root). Die Domain `uptux.de` ist über `CNAME` hinterlegt.
-
-Automatisches Deployment: Inhalt von `scripts/deploy-workflow.yml` als `.github/workflows/deploy.yml` anlegen und unter Pages → Source „GitHub Actions“ wählen. Danach baut und veröffentlicht jeder Push auf `main` die Seite selbst.
+Für den Umzug auf uptux.de im Workflow `npm run build:github-io` durch `npm run build` ersetzen. Dann wird die Domain (`CNAME`) gesetzt und die Indexierung durch Suchmaschinen eingeschaltet.
