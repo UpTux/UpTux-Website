@@ -27,6 +27,6 @@ Neue Seite: Inhalt in `src/content/<sprache>/` anlegen, URL in `src/lib/paths.ts
 
 ## Deployment
 
-Jeder Push auf `main` baut die Seite per GitHub Actions (`.github/workflows/deploy.yml`) und veröffentlicht sie auf GitHub Pages (Einstellungen: Pages → Source: **GitHub Actions**). Die Vorlage für diese Datei liegt in `docs/deploy-workflow.yml`; sie muss einmal manuell nach `.github/workflows/deploy.yml` kopiert werden.
+Jeder Push auf `main` baut die Seite per GitHub Actions (`.github/workflows/deploy.yml`) und veröffentlicht sie auf GitHub Pages (Einstellungen: Pages → Source: **GitHub Actions**).
 
 Für den Umzug auf uptux.de im Workflow `npm run build:github-io` durch `npm run build` ersetzen. Dann wird die Domain (`CNAME`) gesetzt und die Indexierung durch Suchmaschinen eingeschaltet.
