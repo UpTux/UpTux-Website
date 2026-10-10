@@ -12,6 +12,7 @@
   --bg: #ffffff;
   --bg-tint: #f4f8f6;
   --accent: #f5b941;
+  --logo-on-dark: #c4c4c4; /* logo on dark backgrounds, softer than white */
   --radius: 16px;
   --shadow: 0 1px 2px rgba(6, 26, 25, 0.04), 0 8px 24px rgba(6, 26, 25, 0.06);
   --grad: linear-gradient(100deg, #49d390 0%, #1f9d78 55%, #00807a 100%);
@@ -289,7 +290,7 @@ address { font-style: normal; }
 
 /* Footer */
 .site-footer { background: #041312; color: #9fb8b3; padding-top: 64px; font-size: 0.95rem; }
-.site-footer .logo { color: #fff; }
+.site-footer .logo { color: var(--logo-on-dark); }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; }
 .footer-grid h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; color: #e8f5f0; margin-bottom: 16px; }
 .footer-grid nav a { display: block; color: #9fb8b3; text-decoration: none; padding: 4px 0; }
@@ -311,7 +312,7 @@ address { font-style: normal; }
 
 /* Hero logo lockup above the illustration */
 .hero-visual { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
-.hero-brand { display: flex; align-items: center; gap: 20px; color: #fff; padding-left: 4%; }
+.hero-brand { display: flex; align-items: center; gap: 20px; color: var(--logo-on-dark); padding-left: 4%; }
 .hero-brand-mark { width: clamp(88px, 9vw, 128px); height: auto; flex-shrink: 0; }
 .hero-brand-word { display: block; font-size: clamp(2.2rem, 3.4vw, 3.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
 .hero-brand-slogan { display: block; margin-top: 8px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brand-400); }

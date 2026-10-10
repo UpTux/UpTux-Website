@@ -47,7 +47,7 @@ export function HeroArt({ lang }: { lang: Lang }) {
         {/* uptux core */}
         <g transform="translate(240 160)">
           <rect width="82" height="120" rx="16" fill="#0E2B29" stroke="#49D390" strokeOpacity=".7" />
-          <g transform="translate(13 30)" color="#E8F5F0">
+          <g transform="translate(13 30)" color="#C4C4C4">
             <LogoMark id="ha" width="56" height="44" />
           </g>
           <text x="41" y="104" textAnchor="middle" className="ha-label">UpTux</text>
