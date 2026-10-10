@@ -17,7 +17,7 @@ export default function UeberUns() {
         crumbs={[{ name: 'Über uns' }]}
         eyebrow="Über UpTux"
         title="Aus der Industrie. Für die Industrie."
-        lead="UpTux ist ein junges IT-Unternehmen aus Mainhardt in Baden-Württemberg. Unser Team bringt über zehn Jahre Erfahrung in sicherheitskritischer Softwareentwicklung mit, unter anderem aus Automatisierungstechnik, automatisiertem Fahren, Smart Home und Digital Health."
+        lead="UpTux ist ein junges IT-Unternehmen aus Mainhardt in Baden-Württemberg. Unser Team bringt über 15 Jahre Erfahrung in sicherheitskritischer Softwareentwicklung mit, unter anderem aus Automatisierungstechnik, automatisiertem Fahren, Smart Home und Digital Health."
       />
       <section className="section">
         <div className="container split">

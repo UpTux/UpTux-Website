@@ -1,9 +1,11 @@
+import { detailProducts } from '@/content/products';
+
 export type Lang = 'de' | 'en';
 export const langs: Lang[] = ['de', 'en'];
 
 // URL of every page in each language. Pages that exist in both languages
 // share an id, which is how the language switch finds the counterpart.
-export const paths = {
+const staticPaths = {
   home: { de: '/', en: '/en/' },
   services: { de: '/leistungen/', en: '/en/services/' },
   retrofit: { de: '/retrofit/', en: '/en/retrofit/' },
@@ -19,7 +21,16 @@ export const paths = {
   privacy: { de: '/datenschutz/', en: '/en/privacy/' },
 } satisfies Record<string, Record<Lang, string>>;
 
-export type PageId = keyof typeof paths;
+export type StaticPageId = keyof typeof staticPaths;
+/** Static pages by name, generated product pages as `product:<slug>`. */
+export type PageId = StaticPageId | `product:${string}`;
+
+export const paths: Record<PageId, Record<Lang, string>> = {
+  ...staticPaths,
+  ...Object.fromEntries(
+    detailProducts.map((p) => [`product:${p.slug}`, { de: `/produkte/${p.slug}/`, en: `/en/products/${p.slug}/` }]),
+  ),
+};
 export const pageIds = Object.keys(paths) as PageId[];
 
 export function pathOf(id: PageId, lang: Lang, anchor?: string): string {

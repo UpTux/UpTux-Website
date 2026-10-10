@@ -17,7 +17,7 @@ export default function About() {
         crumbs={[{ name: 'About us' }]}
         eyebrow="About UpTux"
         title="From industry. For industry."
-        lead="UpTux is a young IT company from Mainhardt in Baden-Württemberg, Germany. Our team brings more than ten years of experience in safety-critical software development, including automation, automated driving, smart home and digital health."
+        lead="UpTux is a young IT company from Mainhardt in Baden-Württemberg, Germany. Our team brings more than 15 years of experience in safety-critical software development, including automation, automated driving, smart home and digital health."
       />
       <section className="section">
         <div className="container split">

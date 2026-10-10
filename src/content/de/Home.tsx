@@ -1,7 +1,12 @@
 import { HeroArt, HeroBrand } from '@/components/HeroArt';
 import { Icon, type IconName } from '@/components/Icon';
+import { products, productHref } from '@/content/products';
 import { Card, CheckList, CtaBand, ProtocolGrid, SectionHead, Steps } from '@/components/Blocks';
 import Link from 'next/link';
+
+// Products shown on the home page; all products are on the products page.
+const featured = ['cloud-plc', 'opc-ua-stack', 'adsify', 'openec-diagnostics', 'some-ip-stack', 'taktora'];
+const featuredProducts = featured.map((slug) => products.find((p) => p.slug === slug)!);
 
 const processSteps = [
   { title: 'Verstehen', text: 'Wir schauen uns Ihre Anlage vor Ort an, sprechen mit den Menschen, die damit arbeiten, und klären, welche Daten und Schnittstellen es gibt.' },
@@ -124,17 +129,16 @@ export default function Home() {
             title="Bewährte Bausteine für schnellere Projekte"
             intro="Aus unseren Projekten sind eigene Produkte entstanden. Sie sparen Entwicklungszeit und machen Ihre Lösung robuster."
           />
-          <div className="card-grid card-grid-3">
-            <Card lang="de" icon="cloud" title="Cloud PLC" link="/cloud-plc/">
-              <p>Die SPS-Runtime in der Cloud oder auf Ihrer eigenen IT. Unabhängig von knapper SPS-Hardware, skalierbar und IT-nah.</p>
-            </Card>
-            <Card lang="de" icon="cpu" title="Damper" link="/damper/">
-              <p>Schlanke, modulare C++17-Bibliothek für Embedded- und Unternehmenssoftware mit integrierter Kryptografie.</p>
-            </Card>
-            <Card lang="de" icon="file" title="AsamMdf" link="/asammdf/">
-              <p>Schnelle .NET-Bibliothek zum Lesen von ASAM MDF4-Messdaten, verfügbar als NuGet-Paket.</p>
-            </Card>
+          <div className="card-grid">
+            {featuredProducts.map((p) => (
+              <Card key={p.slug} lang="de" icon={p.icon} title={p.name} link={productHref(p, 'de')}>
+                <p>{p.de.summary}</p>
+              </Card>
+            ))}
           </div>
+          <p className="section-more">
+            <Link className="text-link" href="/produkte/">Alle 12 Produkte ansehen <Icon name="arrow" size={18} /></Link>
+          </p>
         </div>
       </section>
 

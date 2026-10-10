@@ -12,7 +12,7 @@ const navIds = ['services', 'retrofit', 'products', 'about'] as const;
 const productIds: PageId[] = ['products', 'cloudplc', 'damper', 'asammdf'];
 
 function isActive(pageId: PageId | undefined, navId: PageId) {
-  return pageId === navId || (navId === 'products' && !!pageId && productIds.includes(pageId));
+  return pageId === navId || (navId === 'products' && !!pageId && (productIds.includes(pageId) || pageId.startsWith('product:')));
 }
 
 export function Header({ lang }: { lang: Lang }) {

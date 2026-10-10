@@ -6,7 +6,7 @@ type UiText = {
   nav: { services: string; retrofit: string; products: string; about: string };
   cta: string; langLabel: string; claim: string;
   footServices: string; footProducts: string; footContact: string;
-  footLinks: Record<'retrofit' | 'data' | 'software' | 'vision' | 'pentest' | 'damper' | 'asammdf', string>;
+  footLinks: Record<'retrofit' | 'data' | 'software' | 'vision' | 'pentest' | 'damper' | 'asammdf' | 'all', string>;
   contact: string; imprint: string; privacy: string; country: string;
   crumbsLabel: string; home: string; more: string;
   ctaTitle: string; ctaText: string; protoMoreTitle: string; protoMoreText: string;
@@ -34,6 +34,7 @@ export const ui = {
       pentest: 'Security & Penetration Testing',
       damper: 'Damper C++ Bibliothek',
       asammdf: 'AsamMdf für .NET',
+      all: 'Alle Produkte',
     },
     contact: 'Kontakt',
     imprint: 'Impressum',
@@ -68,6 +69,7 @@ export const ui = {
       pentest: 'Security & penetration testing',
       damper: 'Damper C++ library',
       asammdf: 'AsamMdf for .NET',
+      all: 'All products',
     },
     contact: 'Contact',
     imprint: 'Legal notice',

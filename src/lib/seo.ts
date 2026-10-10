@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { basePath, isTestBuild, site } from './site';
-import { paths, type Lang, type PageId } from './paths';
+import { paths, type Lang, type PageId, type StaticPageId } from './paths';
+import { detailProducts } from '@/content/products';
 
 type PageText = { title: string; description: string; crumbs?: string[] };
 
 // Title, meta description and breadcrumb names of every page, per language.
-export const pageMeta: Record<PageId, { priority: number } & Record<Lang, PageText>> = {
+const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageText>> = {
   home: {
     priority: 1.0,
     de: { title: "UpTux | Digitalisierung & Retrofit für Industrie und Mittelstand", description: "UpTux unterstützt mittelständische Industrieunternehmen bei der Digitalisierung: Anlagendaten erfassen, Retrofit mit OPC UA & MQTT, individuelle Software und Bildverarbeitung." },
@@ -53,8 +54,8 @@ export const pageMeta: Record<PageId, { priority: number } & Record<Lang, PageTe
   },
   about: {
     priority: 0.6,
-    de: { title: "Über uns: IT aus der Industrie, für die Industrie | UpTux", description: "UpTux ist ein junges IT-Unternehmen aus Mainhardt (Baden-Württemberg) mit über zehn Jahren Erfahrung in sicherheitskritischer Softwareentwicklung.", crumbs: ["Über uns"] },
-    en: { title: "About us: IT from industry, for industry | UpTux", description: "UpTux is a young IT company from Mainhardt, Germany, with more than ten years of experience in safety-critical software development.", crumbs: ["About us"] },
+    de: { title: "Über uns: IT aus der Industrie, für die Industrie | UpTux", description: "UpTux ist ein junges IT-Unternehmen aus Mainhardt (Baden-Württemberg) mit über 15 Jahren Erfahrung in sicherheitskritischer Softwareentwicklung.", crumbs: ["Über uns"] },
+    en: { title: "About us: IT from industry, for industry | UpTux", description: "UpTux is a young IT company from Mainhardt, Germany, with more than 15 years of experience in safety-critical software development.", crumbs: ["About us"] },
   },
   contact: {
     priority: 0.7,
@@ -71,6 +72,20 @@ export const pageMeta: Record<PageId, { priority: number } & Record<Lang, PageTe
     de: { title: "Datenschutzerklärung | UpTux", description: "Datenschutzerklärung der UpTux UG: keine Cookies, kein Tracking.", crumbs: ["Datenschutz"] },
     en: { title: "Privacy policy | UpTux", description: "Privacy policy of UpTux UG: no cookies, no tracking.", crumbs: ["Privacy"] },
   },
+};
+
+export const pageMeta: Record<PageId, { priority: number } & Record<Lang, PageText>> = {
+  ...staticMeta,
+  ...Object.fromEntries(
+    detailProducts.map((p) => [
+      `product:${p.slug}`,
+      {
+        priority: 0.6,
+        de: { title: p.de.seoTitle ?? `${p.name} | UpTux`, description: p.de.seoDescription ?? p.de.summary, crumbs: ['Produkte', p.name] },
+        en: { title: p.en.seoTitle ?? `${p.name} | UpTux`, description: p.en.seoDescription ?? p.en.summary, crumbs: ['Products', p.name] },
+      },
+    ]),
+  ),
 };
 
 /** Next.js metadata for one page: title, description, canonical, hreflang, Open Graph. */

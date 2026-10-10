@@ -328,3 +328,8 @@ address { font-style: normal; }
   .lang-switch { margin-left: 0; }
 }
 .main-nav { margin-left: auto; }
+
+/* Product pages */
+.tag-list { list-style: none; padding: 0; margin: 4px 0 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag-list li { padding: 5px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); font-size: 0.85rem; font-weight: 600; color: var(--brand-700); }
+.section-more { margin: 32px 0 0; }

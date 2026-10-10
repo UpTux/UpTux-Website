@@ -26,8 +26,10 @@ export function Footer({ lang }: { lang: Lang }) {
         <nav aria-label={t.footProducts}>
           <h2>{t.footProducts}</h2>
           <Link href={l('cloudplc')}>Cloud PLC</Link>
-          <Link href={l('damper')}>{t.footLinks.damper}</Link>
-          <Link href={l('asammdf')}>{t.footLinks.asammdf}</Link>
+          <Link href={l('product:opc-ua-stack')}>OPC UA Stack</Link>
+          <Link href={l('product:adsify')}>Adsify</Link>
+          <Link href={l('product:openec-diagnostics')}>OpenEC Diagnostics</Link>
+          <Link href={l('products')}>{t.footLinks.all} →</Link>
         </nav>
         <div>
           <h2>{t.footContact}</h2>
