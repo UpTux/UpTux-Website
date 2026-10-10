@@ -24,7 +24,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build
+      # Test phase on jochngst.github.io/UpTux-Website/. Switch to `npm run build` once uptux.de points here.
+      - run: npm run build:github-io
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

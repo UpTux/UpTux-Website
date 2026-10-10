@@ -3,5 +3,5 @@
 export const PREVIEW = typeof __PREVIEW__ !== 'undefined' && __PREVIEW__;
 
 export function href(path) {
-  return PREVIEW ? `#${path}` : path;
+  return PREVIEW ? `#${path}` : import.meta.env.BASE_URL.replace(/\/$/, '') + path;
 }

@@ -8,6 +8,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
 const { render, routes, notFound, redirects, site } = await import(path.join(root, 'dist-ssr/entry-server.js'));
 
+// A sub-path build (e.g. /UpTux-Website/ on github.io) is a test deployment:
+// it is kept out of search engines and gets no CNAME.
+const base = (process.env.SITE_BASE || '/').replace(/\/$/, '');
+const isTest = base !== '';
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 const today = new Date().toISOString().slice(0, 10);
@@ -58,11 +62,11 @@ function head(route) {
   return [
     `<title>${esc(route.title)}</title>`,
     `<meta name="description" content="${esc(route.description)}" />`,
-    route.noindex ? '<meta name="robots" content="noindex" />' : `<link rel="canonical" href="${url}" />`,
+    route.noindex || isTest ? '<meta name="robots" content="noindex" />' : `<link rel="canonical" href="${url}" />`,
     '<meta name="theme-color" content="#061A19" />',
-    '<link rel="icon" href="/favicon.svg" type="image/svg+xml" />',
-    '<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />',
-    '<link rel="apple-touch-icon" href="/apple-touch-icon.png" />',
+    `<link rel="icon" href="${base}/favicon.svg" type="image/svg+xml" />`,
+    `<link rel="icon" href="${base}/favicon-32.png" sizes="32x32" type="image/png" />`,
+    `<link rel="apple-touch-icon" href="${base}/apple-touch-icon.png" />`,
     '<meta property="og:type" content="website" />',
     '<meta property="og:locale" content="de_DE" />',
     '<meta property="og:site_name" content="UpTux" />',
@@ -90,7 +94,7 @@ for (const route of [...routes, notFound]) {
 }
 
 for (const [from, to] of Object.entries(redirects)) {
-  write(path.join(from, 'index.html'), `<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Weiterleitung</title><link rel="canonical" href="${site.url}${to}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${to}"></head><body><a href="${to}">Weiter zu ${site.url}${to}</a></body></html>`);
+  write(path.join(from, 'index.html'), `<!doctype html><html lang="de"><head><meta charset="utf-8"><title>Weiterleitung</title><link rel="canonical" href="${site.url}${to}"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${base}${to}"></head><body><a href="${base}${to}">Weiter zu ${site.url}${to}</a></body></html>`);
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -99,7 +103,11 @@ ${routes.map((r) => `  <url><loc>${site.url}${r.path}</loc><lastmod>${today}</la
 </urlset>
 `;
 write('sitemap.xml', sitemap);
-write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
-write('CNAME', 'uptux.de\n');
+if (isTest) {
+  write('robots.txt', 'User-agent: *\nDisallow: /\n');
+} else {
+  write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${site.url}/sitemap.xml\n`);
+  write('CNAME', 'uptux.de\n');
+}
 write('.nojekyll', '');
 console.log(`Prerendered ${routes.length} pages + 404 + ${Object.keys(redirects).length} redirect(s).`);
