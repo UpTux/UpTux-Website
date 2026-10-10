@@ -1,4 +1,5 @@
 import { Card, CheckList, CtaBand, PageHero, SectionHead } from '@/components/Blocks';
+import { ProductLinks } from '@/components/ProductDetail';
 import { site } from '@/lib/site';
 
 export default function AsamMdf() {
@@ -27,6 +28,7 @@ export default function AsamMdf() {
           <div>
             <SectionHead eyebrow="Installation" title="Up and running in a minute" intro="AsamMdf targets .NET Standard 2.1 and is compatible with .NET 5 to .NET 10." />
             <pre className="code"><code>dotnet add package AsamMdf</code></pre>
+            <ProductLinks lang="en" slug="asammdf" />
           </div>
           <div>
             <h2 className="h3">Licensing</h2>

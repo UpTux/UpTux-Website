@@ -29,6 +29,8 @@ export const productGroups: Record<ProductGroup, Record<Lang, { title: string; i
 
 type Feature = { icon: IconName; title: string; text: string };
 
+export type ProductLink = { type: 'github' | 'nuget' | 'npm' | 'docs'; url: string; label?: string };
+
 type ProductText = {
   /** One sentence for cards on the overview page. */
   summary: string;
@@ -51,6 +53,8 @@ export type Product = {
   href?: Record<Lang, string>;
   /** Technologies and protocols, shown as tags. */
   tech?: string[];
+  /** Source code, packages and documentation. */
+  links?: ProductLink[];
 } & Record<Lang, ProductText>;
 
 export const products: Product[] = [
@@ -68,6 +72,7 @@ export const products: Product[] = [
     name: 'taktora',
     icon: 'activity',
     group: 'runtime',
+    links: [{ type: 'docs', url: 'https://taktora.eu', label: 'taktora.eu' }],
     tech: ['Rust', 'Linux', 'iceoryx2', 'Zenoh', 'EtherCAT', 'CAN / SocketCAN'],
     de: {
       summary: 'Executor- und Connector-Framework in Rust für deterministische Echtzeitsysteme mit Zero-Copy-Kommunikation.',
@@ -143,32 +148,47 @@ export const products: Product[] = [
   },
   {
     slug: 'opc-ua-stack',
-    name: 'OPC UA Stack',
+    name: 'OPC UA Stack (OpcSharp)',
     icon: 'plug',
     group: 'communication',
-    tech: ['OPC UA', 'Client', 'Server'],
+    links: [{ type: 'docs', url: 'https://patdhlk.com/OpcSharp' }],
+    tech: ['OPC UA', 'C#', '.NET', 'UA TCP', 'X.509'],
     de: {
-      summary: 'Eigener OPC-UA-Stack für Client und Server, um Maschinen herstellerunabhängig zu vernetzen.',
-      seoTitle: 'OPC UA Client- und Server-Stack | UpTux',
-      seoDescription: 'Der OPC-UA-Stack von UpTux für Client und Server: Maschinen herstellerunabhängig vernetzen und Daten sicher bereitstellen.',
-      tagline: 'Herstellerunabhängig vernetzen',
-      lead: 'OPC UA ist der Standard für die herstellerunabhängige Kommunikation in der Industrie. Mit unserem eigenen Client- und Server-Stack binden Sie Maschinen an, stellen Daten Ihrer Anlagen bereit und integrieren OPC UA in Ihre eigene Software.',
+      summary: 'Schlanker OPC-UA-Stack in C# für Client und Server: genau die Teile der Spezifikation, die Sie im Alltag brauchen.',
+      seoTitle: 'OPC UA Stack in C# (OpcSharp): Client und Server | UpTux',
+      seoDescription: 'OpcSharp ist ein schlanker OPC-UA-Stack in C#: Sessions, Browsen, Lesen, Schreiben, Subscriptions und Security über UA TCP, ohne Codegenerierung und XML-Konfiguration.',
+      tagline: 'OPC UA ohne Ballast',
+      lead: 'OPC UA ist der Standard für die herstellerunabhängige Kommunikation in der Industrie, die Spezifikation ist aber riesig. OpcSharp setzt bewusst die Teile um, die im Alltag gebraucht werden, und verzichtet auf Codegenerierung, XML-Konfigurationsdateien und Reflection. So binden Sie Maschinen schnell an und behalten den Überblick über Ihren Code.',
       features: [
-        { icon: 'plug', title: 'Client', text: 'Daten aus OPC-UA-Servern von Maschinen und Steuerungen lesen, schreiben und abonnieren.' },
-        { icon: 'layers', title: 'Server', text: 'Eigene Anlagen und Anwendungen als OPC-UA-Server bereitstellen, z. B. beim Retrofit bestehender Maschinen.' },
-        { icon: 'code', title: 'Integration', text: 'Als Baustein in Ihrer eigenen Software einsetzbar. Wir unterstützen bei Informationsmodell und Anbindung.' },
+        { icon: 'refresh', title: 'Sessions', text: 'Verbinden, Authentifizieren und automatisches Wiederverbinden bei Verbindungsfehlern.' },
+        { icon: 'compass', title: 'Browsen', text: 'Den Adressraum eines OPC-UA-Servers durchsuchen.' },
+        { icon: 'code', title: 'Lesen und Schreiben', text: 'Node-Werte lesen und schreiben, mit Zuordnung auf .NET-Typen.' },
+        { icon: 'activity', title: 'Subscriptions', text: 'Über Datenänderungen benachrichtigt werden, statt zu pollen.' },
+        { icon: 'shield', title: 'Security', text: 'Signieren und Verschlüsseln nach den OPC-UA-Security-Policies mit X.509-Zertifikaten.' },
+        { icon: 'layers', title: 'Client und Server', text: 'Daten von Maschinen abholen oder eigene Anlagen und Anwendungen per OPC UA bereitstellen.' },
+      ],
+      facts: [
+        { label: 'Sprache', value: 'C# / .NET' },
+        { label: 'Transport', value: 'Binäre Kodierung über UA TCP' },
       ],
     },
     en: {
-      summary: 'Our own OPC UA stack for client and server, for vendor-independent machine connectivity.',
-      seoTitle: 'OPC UA client and server stack | UpTux',
-      seoDescription: 'The UpTux OPC UA stack for client and server: connect machines independently of vendors and provide data securely.',
-      tagline: 'Vendor-independent connectivity',
-      lead: 'OPC UA is the standard for vendor-independent communication in industry. With our own client and server stack you connect machines, provide data from your equipment and integrate OPC UA into your own software.',
+      summary: 'A lean OPC UA stack in C# for client and server: exactly the parts of the specification you need day to day.',
+      seoTitle: 'OPC UA stack in C# (OpcSharp): client and server | UpTux',
+      seoDescription: 'OpcSharp is a lean OPC UA stack in C#: sessions, browsing, read, write, subscriptions and security over UA TCP, without code generation or XML configuration.',
+      tagline: 'OPC UA without the bloat',
+      lead: 'OPC UA is the standard for vendor-independent communication in industry, but the specification is huge. OpcSharp deliberately implements the parts you need day to day and avoids code generation, XML configuration files and reflection. You connect machines quickly and keep your code easy to follow.',
       features: [
-        { icon: 'plug', title: 'Client', text: 'Read, write and subscribe to data from the OPC UA servers of machines and controllers.' },
-        { icon: 'layers', title: 'Server', text: 'Expose your own equipment and applications as OPC UA servers, for example when retrofitting existing machines.' },
-        { icon: 'code', title: 'Integration', text: 'Use it as a building block in your own software. We help with the information model and connectivity.' },
+        { icon: 'refresh', title: 'Sessions', text: 'Connect, authenticate and reconnect automatically after connection errors.' },
+        { icon: 'compass', title: 'Browsing', text: "Browse an OPC UA server's address space." },
+        { icon: 'code', title: 'Read and write', text: 'Read and write node values, mapped to .NET types.' },
+        { icon: 'activity', title: 'Subscriptions', text: 'Get notified of data changes instead of polling.' },
+        { icon: 'shield', title: 'Security', text: 'Signing and encryption according to the OPC UA security policies with X.509 certificates.' },
+        { icon: 'layers', title: 'Client and server', text: 'Fetch data from machines or expose your own equipment and applications via OPC UA.' },
+      ],
+      facts: [
+        { label: 'Language', value: 'C# / .NET' },
+        { label: 'Transport', value: 'Binary encoding over UA TCP' },
       ],
     },
   },
@@ -210,6 +230,10 @@ export const products: Product[] = [
     name: 'Dahlke.TwinCAT.Ads',
     icon: 'plug',
     group: 'communication',
+    links: [
+      { type: 'github', url: 'https://github.com/patdhlk/Dahlke.TwinCAT.Ads' },
+      { type: 'nuget', url: 'https://www.nuget.org/packages/Dahlke.TwinCAT.Ads' },
+    ],
     tech: ['C#', '.NET', 'Beckhoff TwinCAT', 'ADS', 'EtherCAT', 'NuGet'],
     de: {
       summary: '.NET-Bibliothek für Beckhoff TwinCAT: typisierter Zugriff auf SPS-Variablen per ADS, mit Reconnect, Subscriptions und Simulation.',
@@ -257,6 +281,7 @@ export const products: Product[] = [
     name: 'Adsify',
     icon: 'cloud',
     group: 'communication',
+    links: [{ type: 'docs', url: 'https://patdhlk.com/adsify' }],
     tech: ['C#', 'ASP.NET Core', 'REST', 'SignalR', 'Beckhoff ADS', 'EtherCAT', 'MCP'],
     de: {
       summary: 'REST-API für Beckhoff TwinCAT: SPS-Variablen als sichere HTTP-Endpunkte, mit Echtzeit-Updates und EtherCAT-Diagnose.',
@@ -302,6 +327,7 @@ export const products: Product[] = [
     name: 'OpenEC Diagnostics',
     icon: 'eye',
     group: 'communication',
+    links: [{ type: 'github', url: 'https://github.com/patdhlk/OpenEC-Diagnostics' }],
     tech: ['EtherCAT', 'C#', '.NET 8', 'Avalonia', 'pcap', 'Apache 2.0'],
     de: {
       summary: 'Passive EtherCAT-Diagnose: Live-Verkehr über einen TAP oder aus Capture-Dateien dekodieren, ohne die Maschine zu stören.',
@@ -358,6 +384,7 @@ export const products: Product[] = [
     name: 'AsamMdf',
     icon: 'file',
     group: 'libraries',
+    links: [{ type: 'nuget', url: 'https://www.nuget.org/packages/AsamMdf' }],
     href: { de: '/asammdf/', en: '/en/asammdf/' },
     de: { summary: 'Performante .NET-Bibliothek zum Lesen von ASAM MDF4-Messdateien mit Streaming-API, als NuGet-Paket.' },
     en: { summary: 'A high-performance .NET library for reading ASAM MDF4 measurement files with a streaming API, available on NuGet.' },
@@ -367,6 +394,10 @@ export const products: Product[] = [
     name: 'ifm CR1140 HAL & SDK',
     icon: 'cpu',
     group: 'hmi',
+    links: [
+      { type: 'github', url: 'https://github.com/uptux/ifm-cr1140' },
+      { type: 'nuget', url: 'https://www.nuget.org/packages/Cr1140.Avalonia', label: 'Cr1140.Avalonia' },
+    ],
     tech: ['Rust', 'C#', '.NET', 'Avalonia', 'Slint', 'Yocto Linux', 'SocketCAN'],
     de: {
       summary: 'Eigene Anwendungen in Rust oder .NET auf dem ifm ecomatDisplay CR1140/CR1141, statt der CODESYS-Runtime.',
@@ -412,6 +443,7 @@ export const products: Product[] = [
     name: 'Press Center',
     icon: 'factory',
     group: 'hmi',
+    links: [{ type: 'docs', url: 'https://patdhlk.com/Dahlke.PressCenter/' }],
     tech: ['C#', '.NET', 'Avalonia', 'MVVM', 'Beckhoff ADS', 'RethinkDB'],
     de: {
       summary: 'HMI/SCADA-Software zur Überwachung und Steuerung industrieller Druckmaschinen, bedient per Multitouch.',

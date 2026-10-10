@@ -1,12 +1,38 @@
 import Link from 'next/link';
 import { Card, CheckList, CtaBand, PageHero, SectionHead } from './Blocks';
+import { Icon, type IconName } from './Icon';
 import { pathOf, type Lang } from '@/lib/paths';
-import { productGroups, productHref, type Product } from '@/content/products';
+import { productGroups, productHref, products, type Product, type ProductLink } from '@/content/products';
 
 const labels = {
   de: { products: 'Produkte', product: 'Produkt', features: 'Funktionen', facts: 'Auf einen Blick', tech: 'Technologien', cta: 'Angebot anfragen', ctaTitle: (n: string) => `Interesse an ${n}?`, ctaText: 'Wir beraten Sie zu Lizenz, Integration und Anpassungen für Ihr Projekt.', all: 'Alle Produkte' },
   en: { products: 'Products', product: 'Product', features: 'Features', facts: 'At a glance', tech: 'Technologies', cta: 'Request a quote', ctaTitle: (n: string) => `Interested in ${n}?`, ctaText: "We'll advise you on licensing, integration and customisation for your project.", all: 'All products' },
 };
+
+const linkMeta: Record<ProductLink['type'], { icon: IconName; label: Record<Lang, string> }> = {
+  github: { icon: 'github', label: { de: 'Quellcode auf GitHub', en: 'Source on GitHub' } },
+  nuget: { icon: 'package', label: { de: 'Paket auf NuGet', en: 'Package on NuGet' } },
+  npm: { icon: 'package', label: { de: 'Paket auf npm', en: 'Package on npm' } },
+  docs: { icon: 'book', label: { de: 'Dokumentation', en: 'Documentation' } },
+};
+
+/** Links to source code, packages and documentation of a product. */
+export function ProductLinks({ lang, slug, links }: { lang: Lang; slug?: string; links?: ProductLink[] }) {
+  const list = links ?? products.find((p) => p.slug === slug)?.links ?? [];
+  if (list.length === 0) return null;
+  return (
+    <ul className="product-links">
+      {list.map((l) => (
+        <li key={l.url}>
+          <a href={l.url} target="_blank" rel="noopener">
+            <Icon name={linkMeta[l.type].icon} size={18} />
+            {l.label ? `${linkMeta[l.type].label[lang]}: ${l.label}` : linkMeta[l.type].label[lang]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 // Detail page generated from the product catalogue in src/content/products.ts.
 export function ProductDetail({ product, lang }: { product: Product; lang: Lang }) {
@@ -30,6 +56,7 @@ export function ProductDetail({ product, lang }: { product: Product; lang: Lang 
           <Link className="btn btn-primary" href={pathOf('contact', lang)}>{t.cta}</Link>
           <Link className="btn btn-outline" href={pathOf('products', lang)}>{t.all}</Link>
         </div>
+        <ProductLinks lang={lang} links={product.links} />
       </PageHero>
       {text.features && (
         <section className="section">
