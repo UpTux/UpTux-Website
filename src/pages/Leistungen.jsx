@@ -4,7 +4,7 @@ import { href } from '../link.js';
 
 const services = [
   {
-    id: 'anlagendaten',
+    id: 'data',
     icon: 'activity',
     title: 'Anlagendaten erfassen & verstehen',
     text: 'Bevor man optimieren kann, muss man wissen, was eine Anlage tut. Wir holen Daten aus Steuerungen, Sensoren und Feldbussen, auch dort, wo es keine fertige Schnittstelle gibt, und machen sie verständlich.',
@@ -26,7 +26,7 @@ const services = [
     points: ['Embedded-Software in C und C++', 'Desktop- und Serveranwendungen, z. B. in .NET', 'Web-Anwendungen und Apps', 'Produktentwicklung für den weltweiten Einsatz'],
   },
   {
-    id: 'bildverarbeitung',
+    id: 'vision',
     icon: 'eye',
     title: 'Industrielle Bildverarbeitung',
     text: 'Kamerasysteme für Montageprüfung, Oberflächeninspektion, optische Messtechnik sowie Code- und Zeichenerkennung, in 2D und 3D und direkt in Ihre Linie integriert.',

@@ -1,9 +1,9 @@
-import { HeroArt } from '../components/HeroArt.jsx';
+import { HeroArt, HeroBrand } from '../components/HeroArt.jsx';
 import { Icon } from '../components/Icon.jsx';
 import { Card, CheckList, CtaBand, ProtocolGrid, SectionHead, Steps } from '../components/Blocks.jsx';
 import { href } from '../link.js';
 
-export const processSteps = [
+const processSteps = [
   { title: 'Verstehen', text: 'Wir schauen uns Ihre Anlage vor Ort an, sprechen mit den Menschen, die damit arbeiten, und klären, welche Daten und Schnittstellen es gibt.' },
   { title: 'Konzipieren', text: 'Sie bekommen ein klares Konzept mit Aufwand, Risiken und Alternativen. Technologie wählen wir nach Ihrem Bedarf, nicht nach Provision.' },
   { title: 'Umsetzen', text: 'Wir entwickeln in kurzen Iterationen und testen früh an der echten Maschine. So sehen Sie schnell Ergebnisse und behalten die Kontrolle.' },
@@ -35,7 +35,10 @@ export default function Home() {
               <li><strong>Vom Sensor bis zur Cloud</strong> alles aus einer Hand</li>
             </ul>
           </div>
-          <HeroArt />
+          <div className="hero-visual">
+            <HeroBrand />
+            <HeroArt />
+          </div>
         </div>
       </section>
 
@@ -71,7 +74,7 @@ export default function Home() {
             intro="Von der ersten Datenabfrage an einer alten Steuerung bis zur fertigen Software, die in Ihrer Produktion läuft."
           />
           <div className="card-grid">
-            <Card icon="activity" title="Anlagen verstehen" link="/leistungen/#anlagendaten">
+            <Card icon="activity" title="Anlagen verstehen" link="/leistungen/#data">
               <p>Wir erfassen Maschinendaten, machen Zustände sichtbar und schaffen die Basis für Monitoring, OEE und vorausschauende Wartung.</p>
             </Card>
             <Card icon="plug" title="Retrofit & Schnittstellen" link="/retrofit/">

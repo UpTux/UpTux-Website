@@ -20,7 +20,9 @@ function PreviewApp() {
     return () => window.removeEventListener('hashchange', onChange);
   }, []);
   useEffect(() => {
-    document.title = findRoute(loc.path).title;
+    const route = findRoute(loc.path);
+    document.title = route.title;
+    document.documentElement.lang = route.lang;
     const el = loc.anchor && document.getElementById(loc.anchor);
     if (el) el.scrollIntoView();
     else window.scrollTo(0, 0);

@@ -1,11 +1,13 @@
 // The UpTux mark from the original logo file. The square/bar shapes use
 // currentColor so the logo works on light and dark backgrounds.
-export function LogoMark({ id = 'ut', className, title }) {
+export function LogoMark({ id = 'ut', className, title, width, height }) {
   const bar = <rect x="969.208" y="1056.59" width="1016.47" height="4761.35" />;
   const sq = <rect x="2826.83" y="7244.43" width="575.598" height="575.598" />;
   return (
     <svg
       className={className}
+      width={width}
+      height={height}
       viewBox="0 0 5746 4501"
       role={title ? 'img' : undefined}
       aria-hidden={title ? undefined : true}

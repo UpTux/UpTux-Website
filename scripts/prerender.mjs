@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const dist = path.join(root, 'dist');
-const { render, routes, notFound, redirects, site } = await import(path.join(root, 'dist-ssr/entry-server.js'));
+const { render, routes, notFound, redirects, site, alternatesOf } = await import(path.join(root, 'dist-ssr/entry-server.js'));
 
 // A sub-path build (e.g. /UpTux-Website/ on github.io) is a test deployment:
 // it is kept out of search engines and gets no CNAME.
@@ -43,10 +43,10 @@ const organization = {
 
 function crumbsLd(route) {
   if (!route.crumbs) return null;
-  const items = [{ name: 'Start', path: '/' }];
+  const items = [{ name: route.lang === 'en' ? 'Home' : 'Start', path: alternatesOf({ id: 'home' })[route.lang] }];
   route.crumbs.forEach((name, i) => {
     const isLast = i === route.crumbs.length - 1;
-    const match = routes.find((r) => r.crumbs && r.crumbs[r.crumbs.length - 1] === name);
+    const match = routes.find((r) => r.lang === route.lang && r.crumbs && r.crumbs[r.crumbs.length - 1] === name);
     items.push({ name, path: isLast ? route.path : match?.path });
   });
   return {
@@ -58,7 +58,13 @@ function crumbsLd(route) {
 
 function head(route) {
   const url = `${site.url}${route.path}`;
-  const ld = [route.path === '/' ? organization : null, route.path === '/' ? { '@context': 'https://schema.org', '@type': 'WebSite', name: 'UpTux', url: `${site.url}/`, inLanguage: 'de-DE', publisher: { '@id': `${site.url}/#organization` } } : null, crumbsLd(route)].filter(Boolean);
+  const isHome = route.id === 'home';
+  const ld = [
+    isHome ? organization : null,
+    isHome ? { '@context': 'https://schema.org', '@type': 'WebSite', name: 'UpTux', url: url, inLanguage: route.lang === 'en' ? 'en' : 'de-DE', publisher: { '@id': `${site.url}/#organization` } } : null,
+    crumbsLd(route),
+  ].filter(Boolean);
+  const alt = route.noindex || isTest ? null : alternatesOf(route);
   return [
     `<title>${esc(route.title)}</title>`,
     `<meta name="description" content="${esc(route.description)}" />`,
@@ -68,7 +74,12 @@ function head(route) {
     `<link rel="icon" href="${base}/favicon-32.png" sizes="32x32" type="image/png" />`,
     `<link rel="apple-touch-icon" href="${base}/apple-touch-icon.png" />`,
     '<meta property="og:type" content="website" />',
-    '<meta property="og:locale" content="de_DE" />',
+    `<meta property="og:locale" content="${route.lang === 'en' ? 'en_GB' : 'de_DE'}" />`,
+    ...(alt ? [
+      `<link rel="alternate" hreflang="de" href="${site.url}${alt.de}" />`,
+      `<link rel="alternate" hreflang="en" href="${site.url}${alt.en}" />`,
+      `<link rel="alternate" hreflang="x-default" href="${site.url}${alt.de}" />`,
+    ] : []),
     '<meta property="og:site_name" content="UpTux" />',
     `<meta property="og:title" content="${esc(route.title)}" />`,
     `<meta property="og:description" content="${esc(route.description)}" />`,
@@ -89,7 +100,7 @@ function write(file, html) {
 }
 
 for (const route of [...routes, notFound]) {
-  const html = template.replace('<!--app-head-->', head(route)).replace('<!--app-html-->', render(route.path));
+  const html = template.replace('<html lang="de">', `<html lang="${route.lang}">`).replace('<!--app-head-->', head(route)).replace('<!--app-html-->', render(route.path));
   write(route === notFound ? '404.html' : path.join(route.path, 'index.html'), html);
 }
 
@@ -98,8 +109,12 @@ for (const [from, to] of Object.entries(redirects)) {
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${routes.map((r) => `  <url><loc>${site.url}${r.path}</loc><lastmod>${today}</lastmod><priority>${r.priority}</priority></url>`).join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${routes.map((r) => {
+  const alt = alternatesOf(r);
+  return `  <url><loc>${site.url}${r.path}</loc><lastmod>${today}</lastmod><priority>${r.priority}</priority>` +
+    `<xhtml:link rel="alternate" hreflang="de" href="${site.url}${alt.de}"/><xhtml:link rel="alternate" hreflang="en" href="${site.url}${alt.en}"/></url>`;
+}).join('\n')}
 </urlset>
 `;
 write('sitemap.xml', sitemap);
@@ -110,4 +125,4 @@ if (isTest) {
   write('CNAME', 'uptux.de\n');
 }
 write('.nojekyll', '');
-console.log(`Prerendered ${routes.length} pages + 404 + ${Object.keys(redirects).length} redirect(s).`);
+console.log(`Prerendered ${routes.length} pages (de + en) + 404 + ${Object.keys(redirects).length} redirect(s).`);
