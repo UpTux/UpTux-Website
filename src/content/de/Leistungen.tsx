@@ -48,6 +48,14 @@ const services: { id: string; icon: IconName; title: string; text: string; point
     points: ['Penetrationstests für Geräte, Software und Schnittstellen', 'Sicherheitsanalyse von OT-Netzen', 'Härtung, Verschlüsselung und Authentifizierung', 'Code-Reviews mit Security-Fokus'],
     link: '/penetration-testing/',
   },
+  {
+    id: 'ki',
+    icon: 'cpu',
+    title: 'Lokale KI',
+    text: 'KI nutzen, ohne Daten aus der Hand zu geben: Wir beraten Sie, legen Hardware aus und richten Sprachmodelle ein, die in Ihrem Netz laufen und Ihr Wissen nutzen.',
+    points: ['Beratung, Machbarkeit und Hardware-Auslegung', 'Betrieb offener Sprachmodelle auf eigener Hardware', 'Wissensassistenten über Ihre Dokumente (RAG)', 'Integration und Absicherung nach Security-Standards'],
+    link: '/lokale-ki/',
+  },
 ];
 
 export default function Leistungen() {

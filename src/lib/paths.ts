@@ -11,6 +11,7 @@ const staticPaths = {
   retrofit: { de: '/retrofit/', en: '/en/retrofit/' },
   vision: { de: '/machine-vision/', en: '/en/machine-vision/' },
   pentest: { de: '/penetration-testing/', en: '/en/penetration-testing/' },
+  localai: { de: '/lokale-ki/', en: '/en/local-ai/' },
   products: { de: '/produkte/', en: '/en/products/' },
   cloudplc: { de: '/cloud-plc/', en: '/en/cloud-plc/' },
   damper: { de: '/damper/', en: '/en/damper/' },

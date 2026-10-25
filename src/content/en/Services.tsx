@@ -48,6 +48,14 @@ const services: { id: string; icon: IconName; title: string; text: string; point
     points: ['Penetration tests for devices, software and interfaces', 'Security analysis of OT networks', 'Hardening, encryption and authentication', 'Security-focused code reviews'],
     link: '/en/penetration-testing/',
   },
+  {
+    id: 'ai',
+    icon: 'cpu',
+    title: 'Local AI',
+    text: 'Use AI without handing over your data: we advise you, size the hardware and set up language models that run in your network and use your knowledge.',
+    points: ['Consulting, feasibility and hardware sizing', 'Running open language models on your own hardware', 'Knowledge assistants over your documents (RAG)', 'Integration and security to professional standards'],
+    link: '/en/local-ai/',
+  },
 ];
 
 export default function Services() {

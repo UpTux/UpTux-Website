@@ -22,6 +22,7 @@ export function Footer({ lang }: { lang: Lang }) {
           <Link href={l('services', 'software')}>{t.footLinks.software}</Link>
           <Link href={l('vision')}>{t.footLinks.vision}</Link>
           <Link href={l('pentest')}>{t.footLinks.pentest}</Link>
+          <Link href={l('localai')}>{t.footLinks.localai}</Link>
         </nav>
         <nav aria-label={t.footProducts}>
           <h2>{t.footProducts}</h2>

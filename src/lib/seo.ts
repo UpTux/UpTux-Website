@@ -14,8 +14,8 @@ const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageT
   },
   services: {
     priority: 0.9,
-    de: { title: "Leistungen: Industrie-Software, Retrofit & Anlagenanbindung | UpTux", description: "Anlagendaten erfassen, Bestandsanlagen modernisieren, individuelle Software, industrielle Bildverarbeitung, Legacy-Modernisierung und Penetration Testing aus einer Hand.", crumbs: ["Leistungen"] },
-    en: { title: "Services: industrial software, retrofit & machine connectivity | UpTux", description: "Machine data acquisition, modernising existing equipment, custom software, machine vision, legacy modernisation and penetration testing from one partner.", crumbs: ["Services"] },
+    de: { title: "Leistungen: Industrie-Software, Retrofit & Anlagenanbindung | UpTux", description: "Anlagendaten erfassen, Bestandsanlagen modernisieren, individuelle Software, industrielle Bildverarbeitung, Legacy-Modernisierung, Penetration Testing und lokale KI aus einer Hand.", crumbs: ["Leistungen"] },
+    en: { title: "Services: industrial software, retrofit & machine connectivity | UpTux", description: "Machine data acquisition, modernising existing equipment, custom software, machine vision, legacy modernisation, penetration testing and local AI from one partner.", crumbs: ["Services"] },
   },
   retrofit: {
     priority: 0.9,
@@ -31,6 +31,11 @@ const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageT
     priority: 0.7,
     de: { title: "Penetration Testing für Embedded, OT und Software | UpTux", description: "Sicherheitsprüfung vernetzter Anlagen, Embedded-Geräte, Software und APIs: strukturierte Penetrationstests mit priorisierten Befunden und Unterstützung bei der Behebung.", crumbs: ["Leistungen", "Penetration Testing"] },
     en: { title: "Penetration testing for embedded, OT and software | UpTux", description: "Security testing of connected machines, embedded devices, software and APIs: structured penetration tests with prioritised findings and help with fixes.", crumbs: ["Services", "Penetration testing"] },
+  },
+  localai: {
+    priority: 0.8,
+    de: { title: "Lokale KI: Beratung & Einrichtung von KI auf eigener Hardware | UpTux", description: "Wir beraten zu lokaler KI und richten sie ein: Hardware-Auslegung, offene Sprachmodelle, RAG über Ihre Dokumente, Integration und Absicherung. Ihre Daten bleiben im Haus.", crumbs: ["Leistungen", "Lokale KI"] },
+    en: { title: "Local AI: consulting & setup for AI on your own hardware | UpTux", description: "We advise on local AI and set it up: hardware sizing, open language models, RAG over your documents, integration and security. Your data stays in-house.", crumbs: ["Services", "Local AI"] },
   },
   products: {
     priority: 0.7,
@@ -147,7 +152,7 @@ const organization = {
   },
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
   vatID: site.vatId,
-  knowsAbout: ['Industrie 4.0', 'Retrofit', 'OPC UA', 'MQTT', 'EtherCAT', 'DDS', 'Zenoh', 'CANopen', 'ASAM MDF4', 'Machine Vision', 'Embedded Software', 'Penetration Testing'],
+  knowsAbout: ['Industrie 4.0', 'Retrofit', 'OPC UA', 'MQTT', 'EtherCAT', 'DDS', 'Zenoh', 'CANopen', 'ASAM MDF4', 'Machine Vision', 'Embedded Software', 'Penetration Testing', 'Local AI', 'Large Language Models'],
   areaServed: 'DE',
 };
 
