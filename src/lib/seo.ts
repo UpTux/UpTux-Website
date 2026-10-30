@@ -37,6 +37,11 @@ const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageT
     de: { title: "Lokale KI: Beratung & Einrichtung von KI auf eigener Hardware | UpTux", description: "Wir beraten zu lokaler KI und richten sie ein: Hardware-Auslegung, offene Sprachmodelle, RAG über Ihre Dokumente, Integration und Absicherung. Ihre Daten bleiben im Haus.", crumbs: ["Leistungen", "Lokale KI"] },
     en: { title: "Local AI: consulting & setup for AI on your own hardware | UpTux", description: "We advise on local AI and set it up: hardware sizing, open language models, RAG over your documents, integration and security. Your data stays in-house.", crumbs: ["Services", "Local AI"] },
   },
+  cra: {
+    priority: 0.8,
+    de: { title: "Cyber Resilience Act (CRA): Unterstützung für Maschinen- und Gerätehersteller | UpTux", description: "Was der CRA für Ihre Produkte bedeutet und wie Sie ihn umsetzen: CRA-Check, Risikobewertung, Security by Design, SBOM, Penetrationstests und Meldeprozess.", crumbs: ["Leistungen", "Cyber Resilience Act"] },
+    en: { title: "Cyber Resilience Act (CRA): support for machine and device makers | UpTux", description: "What the CRA means for your products and how to comply: CRA check, risk assessment, security by design, SBOM, penetration testing and vulnerability reporting.", crumbs: ["Services", "Cyber Resilience Act"] },
+  },
   products: {
     priority: 0.7,
     de: { title: "Produkte: Cloud PLC, Damper & AsamMdf | UpTux", description: "Software-Bausteine aus der Praxis: Cloud PLC als SPS-Runtime für Ihre IT, die C++17-Bibliothek Damper und AsamMdf zum Lesen von MDF4-Dateien in .NET.", crumbs: ["Produkte"] },
@@ -157,7 +162,7 @@ const organization = {
   },
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
   vatID: site.vatId,
-  knowsAbout: ['Industrie 4.0', 'Retrofit', 'OPC UA', 'MQTT', 'EtherCAT', 'DDS', 'Zenoh', 'CANopen', 'ASAM MDF4', 'Machine Vision', 'Embedded Software', 'Penetration Testing', 'Local AI', 'Large Language Models'],
+  knowsAbout: ['Industrie 4.0', 'Retrofit', 'OPC UA', 'MQTT', 'EtherCAT', 'DDS', 'Zenoh', 'CANopen', 'ASAM MDF4', 'Machine Vision', 'Embedded Software', 'Penetration Testing', 'Cyber Resilience Act', 'Local AI', 'Large Language Models'],
   areaServed: 'DE',
 };
 

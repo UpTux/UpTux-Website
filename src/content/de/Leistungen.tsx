@@ -49,6 +49,14 @@ const services: { id: string; icon: IconName; title: string; text: string; point
     link: '/penetration-testing/',
   },
   {
+    id: 'cra',
+    icon: 'check',
+    title: 'Cyber Resilience Act',
+    text: 'Der CRA macht Cybersecurity zur Voraussetzung für das CE-Kennzeichen. Wir zeigen Ihnen, was das für Ihre Produkte bedeutet, und setzen die Anforderungen mit Ihnen um.',
+    points: ['CRA-Check und Maßnahmenplan', 'Risikobewertung und Security by Design', 'SBOM und Schwachstellenmanagement', 'Update-Konzept und Meldeprozess'],
+    link: '/cyber-resilience-act/',
+  },
+  {
     id: 'ki',
     icon: 'cpu',
     title: 'Lokale KI',

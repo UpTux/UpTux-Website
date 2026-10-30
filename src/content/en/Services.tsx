@@ -49,6 +49,14 @@ const services: { id: string; icon: IconName; title: string; text: string; point
     link: '/en/penetration-testing/',
   },
   {
+    id: 'cra',
+    icon: 'check',
+    title: 'Cyber Resilience Act',
+    text: 'The CRA makes cybersecurity a requirement for the CE marking. We show you what that means for your products and implement the requirements with you.',
+    points: ['CRA check and action plan', 'Risk assessment and security by design', 'SBOM and vulnerability management', 'Update concept and reporting process'],
+    link: '/en/cyber-resilience-act/',
+  },
+  {
     id: 'ai',
     icon: 'cpu',
     title: 'Local AI',

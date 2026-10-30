@@ -12,6 +12,7 @@ const staticPaths = {
   vision: { de: '/machine-vision/', en: '/en/machine-vision/' },
   pentest: { de: '/penetration-testing/', en: '/en/penetration-testing/' },
   localai: { de: '/lokale-ki/', en: '/en/local-ai/' },
+  cra: { de: '/cyber-resilience-act/', en: '/en/cyber-resilience-act/' },
   products: { de: '/produkte/', en: '/en/products/' },
   cloudplc: { de: '/cloud-plc/', en: '/en/cloud-plc/' },
   damper: { de: '/damper/', en: '/en/damper/' },
