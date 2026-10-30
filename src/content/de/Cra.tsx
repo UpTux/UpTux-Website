@@ -3,10 +3,10 @@ import { Icon, type IconName } from '@/components/Icon';
 import Link from 'next/link';
 
 const duties: [IconName, string, string][] = [
-  ['shield', 'Security by Design', 'Produkte müssen ohne bekannte ausnutzbare Schwachstellen ausgeliefert werden, mit sicherer Standardkonfiguration, Zugriffsschutz und minimaler Angriffsfläche.'],
+  ['shield', 'Security by Design', 'Produkte müssen ohne bekannte ausnutzbare Schwachstellen ausgeliefert werden, mit sicherer Standardkonfiguration, Zugriffsschutz und begrenzter Angriffsfläche.'],
   ['layers', 'Schwachstellen im Griff', 'Hersteller brauchen eine Software-Stückliste (SBOM), einen Prozess zur Behandlung von Schwachstellen und eine öffentliche Meldeadresse.'],
   ['refresh', 'Updates über Jahre', 'Sicherheitsupdates müssen über den gesamten Supportzeitraum bereitstehen, in der Regel mindestens fünf Jahre.'],
-  ['clock', 'Meldung in 24 Stunden', 'Aktiv ausgenutzte Schwachstellen und schwere Sicherheitsvorfälle müssen innerhalb von 24 Stunden gemeldet werden.'],
+  ['clock', 'Frühwarnung in 24 Stunden', 'Aktiv ausgenutzte Schwachstellen und schwere Sicherheitsvorfälle sind meldepflichtig: Frühwarnung innerhalb von 24 Stunden, Meldung nach 72 Stunden, danach ein Abschlussbericht.'],
 ];
 
 const timeline: { title: string; text: string }[] = [
@@ -39,7 +39,7 @@ export default function Cra() {
           <SectionHead
             eyebrow="Was der CRA verlangt"
             title="Cybersecurity über den gesamten Produktlebenszyklus"
-            intro="Der CRA gilt für fast alle Produkte mit digitalen Elementen, die in der EU verkauft werden: Steuerungen, Gateways, HMIs, vernetzte Maschinen und Software. Die Pflichten treffen vor allem den Hersteller."
+            intro="Der CRA gilt für fast alle Produkte mit digitalen Elementen und Daten- oder Netzwerkverbindung, die in der EU verkauft werden: Steuerungen, Gateways, HMIs, vernetzte Maschinen und Software. Die Pflichten treffen vor allem den Hersteller."
           />
           <div className="pain-grid">
             {duties.map(([icon, t, d]) => (

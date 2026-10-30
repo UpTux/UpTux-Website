@@ -3,10 +3,10 @@ import { Icon, type IconName } from '@/components/Icon';
 import Link from 'next/link';
 
 const duties: [IconName, string, string][] = [
-  ['shield', 'Security by design', 'Products must ship without known exploitable vulnerabilities, with a secure default configuration, access control and a minimal attack surface.'],
+  ['shield', 'Security by design', 'Products must ship without known exploitable vulnerabilities, with a secure default configuration, access control and a limited attack surface.'],
   ['layers', 'Vulnerabilities under control', 'Manufacturers need a software bill of materials (SBOM), a vulnerability handling process and a public reporting contact.'],
   ['refresh', 'Updates for years', 'Security updates must be available for the whole support period, usually at least five years.'],
-  ['clock', 'Reporting within 24 hours', 'Actively exploited vulnerabilities and severe security incidents must be reported within 24 hours.'],
+  ['clock', 'Early warning within 24 hours', 'Actively exploited vulnerabilities and severe security incidents must be reported: an early warning within 24 hours, a notification within 72 hours and a final report after that.'],
 ];
 
 const timeline: { title: string; text: string }[] = [
@@ -39,7 +39,7 @@ export default function Cra() {
           <SectionHead
             eyebrow="What the CRA requires"
             title="Cybersecurity across the whole product life cycle"
-            intro="The CRA applies to almost all products with digital elements sold in the EU: controllers, gateways, HMIs, connected machines and software. Most obligations fall on the manufacturer."
+            intro="The CRA applies to almost all products with digital elements and a data or network connection sold in the EU: controllers, gateways, HMIs, connected machines and software. Most obligations fall on the manufacturer."
           />
           <div className="pain-grid">
             {duties.map(([icon, t, d]) => (
