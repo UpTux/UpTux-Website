@@ -7,7 +7,7 @@ type UiText = {
   cta: string; langLabel: string; claim: string;
   footServices: string; footProducts: string; footContact: string;
   footLinks: Record<'retrofit' | 'data' | 'software' | 'vision' | 'pentest' | 'localai' | 'damper' | 'asammdf' | 'all', string>;
-  contact: string; imprint: string; privacy: string; country: string;
+  contact: string; imprint: string; privacy: string; osscompliance: string; country: string;
   crumbsLabel: string; home: string; more: string;
   ctaTitle: string; ctaText: string; protoMoreTitle: string; protoMoreText: string;
   art: Record<'machine' | 'year' | 'bus' | 'dash' | 'avail' | 'it' | 'kpi', string>;
@@ -40,6 +40,7 @@ export const ui = {
     contact: 'Kontakt',
     imprint: 'Impressum',
     privacy: 'Datenschutz',
+    osscompliance: 'Open Source Compliance',
     country: 'Deutschland',
     crumbsLabel: 'Brotkrümelnavigation',
     home: 'Start',
@@ -76,6 +77,7 @@ export const ui = {
     contact: 'Contact',
     imprint: 'Legal notice',
     privacy: 'Privacy',
+    osscompliance: 'Open source compliance',
     country: 'Germany',
     crumbsLabel: 'Breadcrumb',
     home: 'Home',

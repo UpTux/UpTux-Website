@@ -10,6 +10,7 @@ export const site = {
   country: 'DE',
   email: 'info@uptux.de',
   securityEmail: 'security@uptux.de',
+  ossComplianceEmail: 'oss-compliance@uptux.de',
   managingDirector: 'Jochen Gast',
   contentResponsible: ['Jochen Gast', 'Patrick Dahlke'],
   court: 'Amtsgericht Stuttgart',

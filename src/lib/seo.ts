@@ -77,6 +77,11 @@ const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageT
     de: { title: "Datenschutzerklärung | UpTux", description: "Datenschutzerklärung der UpTux UG: keine Cookies, kein Tracking.", crumbs: ["Datenschutz"] },
     en: { title: "Privacy policy | UpTux", description: "Privacy policy of UpTux UG: no cookies, no tracking.", crumbs: ["Privacy"] },
   },
+  osscompliance: {
+    priority: 0.2,
+    de: { title: "Open Source Compliance | UpTux", description: "Open Source Compliance bei UpTux: selbstzertifiziert nach OpenChain ISO/IEC 5230 und ISO/IEC 18974, Lizenz-Compliance, Anfragen nach Quellcode und Meldung von Sicherheitslücken.", crumbs: ["Open Source Compliance"] },
+    en: { title: "Open source compliance | UpTux", description: "Open source compliance at UpTux: self-certified under OpenChain ISO/IEC 5230 and ISO/IEC 18974, licence compliance, source code requests and reporting security vulnerabilities.", crumbs: ["Open source compliance"] },
+  },
 };
 
 export const pageMeta: Record<PageId, { priority: number } & Record<Lang, PageText>> = {

@@ -48,6 +48,7 @@ export function Footer({ lang }: { lang: Lang }) {
           <Link href={l('contact')}>{t.contact}</Link>
           <Link href={l('imprint')}>{t.imprint}</Link>
           <Link href={l('privacy')}>{t.privacy}</Link>
+          <Link href={l('osscompliance')}>{t.osscompliance}</Link>
         </span>
       </div>
     </footer>

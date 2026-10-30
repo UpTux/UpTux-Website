@@ -20,6 +20,7 @@ const staticPaths = {
   contact: { de: '/kontakt/', en: '/en/contact/' },
   imprint: { de: '/impressum/', en: '/en/imprint/' },
   privacy: { de: '/datenschutz/', en: '/en/privacy/' },
+  osscompliance: { de: '/open-source-compliance/', en: '/en/open-source-compliance/' },
 } satisfies Record<string, Record<Lang, string>>;
 
 export type StaticPageId = keyof typeof staticPaths;
