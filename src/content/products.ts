@@ -76,7 +76,7 @@ export const products: Product[] = [
     tech: ['Rust', 'Linux', 'iceoryx2', 'Zenoh', 'EtherCAT', 'CAN / SocketCAN'],
     de: {
       summary: 'Executor- und Connector-Framework in Rust für deterministische Echtzeitsysteme mit Zero-Copy-Kommunikation.',
-      seoTitle: 'taktora: Echtzeit-Executor & Connector-Framework in Rust | UpTux',
+      seoTitle: 'taktora: Echtzeit-Executor & Connectoren in Rust | UpTux',
       seoDescription: 'taktora plant Echtzeit-Tasks deterministisch und verbindet sie ohne Kopien und Allokationen mit EtherCAT, Zenoh und anderen Prozessen. Rust, Linux, iceoryx2.',
       tagline: 'Echtzeit ohne Middleware-Overhead',
       lead: 'taktora ist ein Executor- und Connector-Framework für Echtzeitsysteme. Der Executor plant Ihre Tasks, das Connector-Framework verbindet sie mit Feldbussen, Netzwerkprotokollen und anderen Prozessen. Nachrichten kommen im Hot Path ohne Serialisierung und ohne Speicherallokation aus.',
@@ -96,7 +96,7 @@ export const products: Product[] = [
     },
     en: {
       summary: 'A Rust executor and connector framework for deterministic real-time systems with zero-copy communication.',
-      seoTitle: 'taktora: real-time executor & connector framework in Rust | UpTux',
+      seoTitle: 'taktora: real-time executor & connectors in Rust | UpTux',
       seoDescription: 'taktora schedules real-time tasks deterministically and connects them to EtherCAT, Zenoh and other processes without copies or allocations. Rust, Linux, iceoryx2.',
       tagline: 'Real-time without middleware overhead',
       lead: 'taktora is an executor and connector framework for real-time systems. The executor schedules your tasks, and the connector framework links them to fieldbuses, network protocols and other processes. Messages need no serialisation and no memory allocation in the hot path.',
@@ -123,7 +123,7 @@ export const products: Product[] = [
     tech: ['SOME/IP', 'ROS 2', 'DDS'],
     de: {
       summary: 'Protokoll-Bridge zwischen SOME/IP und ROS 2: SOME/IP-Services erscheinen als ROS-2-Topics und -Services und umgekehrt.',
-      seoTitle: 'SOME/IP–ROS 2 Bridge: SOME/IP-Services in ROS 2 nutzen | UpTux',
+      seoTitle: 'SOME/IP–ROS 2 Bridge: SOME/IP-Services in ROS 2 | UpTux',
       seoDescription: 'Die UpTux SOME/IP–ROS 2 Bridge übersetzt SOME/IP-Methoden, -Events und -Felder in ROS-2-Topics und -Services und umgekehrt.',
       tagline: 'SOME/IP und ROS 2 verbinden',
       lead: 'Steuergeräte kommunizieren über SOME/IP, Entwicklungs- und Prototyp-Software läuft oft auf ROS 2. Die UpTux SOME/IP–ROS 2 Bridge übersetzt zwischen diesen beiden Protokollen, nicht mehr und nicht weniger. Sie basiert auf unserem SOME/IP-Stack.',
@@ -420,7 +420,7 @@ export const products: Product[] = [
     },
     en: {
       summary: 'Run your own Rust or .NET applications on the ifm ecomatDisplay CR1140/CR1141 instead of the CODESYS runtime.',
-      seoTitle: 'ifm CR1140 HAL & SDK: Rust and .NET instead of CODESYS | UpTux',
+      seoTitle: 'ifm CR1140 HAL & SDK: Rust and .NET, no CODESYS | UpTux',
       seoDescription: 'HAL and SDK for the ifm ecomatDisplay CR1140/CR1141: your own applications in Rust or .NET (Avalonia) with display, keys, CAN, LEDs and persistence instead of CODESYS.',
       tagline: 'Full control over the ecomatDisplay',
       lead: 'With the HAL and SDK for the ifm CR1140/CR1141 ecomatDisplay, your own application runs in place of the CODESYS runtime. You develop in Rust or .NET and have full access to the display, keys, CAN bus and system functions of the 4.3″ operator device.',
@@ -447,7 +447,7 @@ export const products: Product[] = [
     tech: ['C#', '.NET', 'Avalonia', 'MVVM', 'Beckhoff ADS', 'RethinkDB'],
     de: {
       summary: 'HMI/SCADA-Software zur Überwachung und Steuerung industrieller Druckmaschinen, bedient per Multitouch.',
-      seoTitle: 'Press Center: HMI/SCADA für industrielle Druckmaschinen | UpTux',
+      seoTitle: 'Press Center: HMI/SCADA für Druckmaschinen | UpTux',
       seoDescription: 'Press Center ist eine HMI/SCADA-Lösung zur Echtzeit-Überwachung und Steuerung industrieller Druckmaschinen, z. B. im Metalldruck. C#, Avalonia, Beckhoff ADS.',
       tagline: 'HMI/SCADA für Druckmaschinen',
       lead: 'Press Center ist eine Software zur Überwachung und Steuerung industrieller Druckmaschinen in Echtzeit, entstanden für eine Produktionslinie im Metalldruck. Eine durchdachte Navigation, mehrere Assistenzsysteme und vorhersagbare Ergebnisse machen die Bedienung einfach.',
@@ -464,7 +464,7 @@ export const products: Product[] = [
     },
     en: {
       summary: 'HMI/SCADA software for monitoring and controlling industrial printing presses, operated by multitouch.',
-      seoTitle: 'Press Center: HMI/SCADA for industrial printing presses | UpTux',
+      seoTitle: 'Press Center: HMI/SCADA for printing presses | UpTux',
       seoDescription: 'Press Center is an HMI/SCADA solution for real-time monitoring and control of industrial printing presses, e.g. in metal printing. C#, Avalonia, Beckhoff ADS.',
       tagline: 'HMI/SCADA for printing presses',
       lead: 'Press Center is software for monitoring and controlling industrial printing presses in real time, built for a metal printing production line. Well-designed navigation, several assistance systems and predictable results make operation simple.',

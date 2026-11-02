@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { basePath, isTestBuild, site } from './site';
 import { paths, type Lang, type PageId, type StaticPageId } from './paths';
-import { detailProducts } from '@/content/products';
+import { detailProducts, products } from '@/content/products';
 
 type PageText = { title: string; description: string; crumbs?: string[] };
 
@@ -9,23 +9,23 @@ type PageText = { title: string; description: string; crumbs?: string[] };
 const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageText>> = {
   home: {
     priority: 1.0,
-    de: { title: "UpTux | Digitalisierung & Retrofit für Industrie und Mittelstand", description: "UpTux unterstützt mittelständische Industrieunternehmen bei der Digitalisierung: Anlagendaten erfassen, Retrofit mit OPC UA & MQTT, individuelle Software und Bildverarbeitung." },
+    de: { title: "UpTux | Digitalisierung & Retrofit für den Mittelstand", description: "UpTux unterstützt mittelständische Industrieunternehmen bei der Digitalisierung: Anlagendaten erfassen, Retrofit mit OPC UA & MQTT, individuelle Software und Bildverarbeitung." },
     en: { title: "UpTux | Digitalisation & retrofit for industrial SMEs", description: "UpTux helps mid-sized manufacturers go digital: machine data acquisition, retrofit with OPC UA & MQTT, custom software and machine vision." },
   },
   services: {
     priority: 0.9,
-    de: { title: "Leistungen: Industrie-Software, Retrofit & Anlagenanbindung | UpTux", description: "Anlagendaten erfassen, Bestandsanlagen modernisieren, individuelle Software, industrielle Bildverarbeitung, Legacy-Modernisierung, Penetration Testing und lokale KI aus einer Hand.", crumbs: ["Leistungen"] },
-    en: { title: "Services: industrial software, retrofit & machine connectivity | UpTux", description: "Machine data acquisition, modernising existing equipment, custom software, machine vision, legacy modernisation, penetration testing and local AI from one partner.", crumbs: ["Services"] },
+    de: { title: "Leistungen: Industrie-Software & Retrofit | UpTux", description: "Anlagendaten erfassen, Bestandsanlagen modernisieren, individuelle Software, industrielle Bildverarbeitung, Legacy-Modernisierung, Penetration Testing und lokale KI aus einer Hand.", crumbs: ["Leistungen"] },
+    en: { title: "Services: industrial software & retrofit | UpTux", description: "Machine data acquisition, modernising existing equipment, custom software, machine vision, legacy modernisation, penetration testing and local AI from one partner.", crumbs: ["Services"] },
   },
   retrofit: {
     priority: 0.9,
-    de: { title: "Retrofit von Bestandsanlagen: neue Schnittstellen für alte Maschinen | UpTux", description: "Alte Maschinen fit für Industrie 4.0: Wir rüsten Bestandsanlagen mit OPC UA, MQTT und modernen HMIs nach und binden sie an MES, ERP und Cloud an.", crumbs: ["Leistungen", "Retrofit"] },
-    en: { title: "Retrofit for existing machines: modern interfaces for legacy equipment | UpTux", description: "Get legacy machines ready for Industry 4.0: we retrofit existing equipment with OPC UA, MQTT and modern HMIs and connect it to MES, ERP and the cloud.", crumbs: ["Services", "Retrofit"] },
+    de: { title: "Retrofit: neue Schnittstellen für Bestandsanlagen | UpTux", description: "Alte Maschinen fit für Industrie 4.0: Wir rüsten Bestandsanlagen mit OPC UA, MQTT und modernen HMIs nach und binden sie an MES, ERP und Cloud an.", crumbs: ["Leistungen", "Retrofit"] },
+    en: { title: "Retrofit: modern interfaces for legacy machines | UpTux", description: "Get legacy machines ready for Industry 4.0: we retrofit existing equipment with OPC UA, MQTT and modern HMIs and connect it to MES, ERP and the cloud.", crumbs: ["Services", "Retrofit"] },
   },
   vision: {
     priority: 0.8,
-    de: { title: "Machine Vision: industrielle Bildverarbeitung & optische Prüfung | UpTux", description: "Montageprüfung, 3D-Oberflächeninspektion, optische Messtechnik im Mikrometerbereich sowie Code- und Zeichenerkennung für Ihre Produktion.", crumbs: ["Leistungen", "Machine Vision"] },
-    en: { title: "Machine vision: industrial image processing & optical inspection | UpTux", description: "Assembly inspection, 3D surface inspection, optical metrology with micrometre accuracy and code and character reading for your production.", crumbs: ["Services", "Machine vision"] },
+    de: { title: "Machine Vision: Bildverarbeitung & optische Prüfung | UpTux", description: "Montageprüfung, 3D-Oberflächeninspektion, optische Messtechnik im Mikrometerbereich sowie Code- und Zeichenerkennung für Ihre Produktion.", crumbs: ["Leistungen", "Machine Vision"] },
+    en: { title: "Machine vision: image processing & inspection | UpTux", description: "Assembly inspection, 3D surface inspection, optical metrology with micrometre accuracy and code and character reading for your production.", crumbs: ["Services", "Machine vision"] },
   },
   pentest: {
     priority: 0.7,
@@ -34,18 +34,18 @@ const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageT
   },
   localai: {
     priority: 0.8,
-    de: { title: "Lokale KI: Beratung & Einrichtung von KI auf eigener Hardware | UpTux", description: "Wir beraten zu lokaler KI und richten sie ein: Hardware-Auslegung, offene Sprachmodelle, RAG über Ihre Dokumente, Integration und Absicherung. Ihre Daten bleiben im Haus.", crumbs: ["Leistungen", "Lokale KI"] },
-    en: { title: "Local AI: consulting & setup for AI on your own hardware | UpTux", description: "We advise on local AI and set it up: hardware sizing, open language models, RAG over your documents, integration and security. Your data stays in-house.", crumbs: ["Services", "Local AI"] },
+    de: { title: "Lokale KI: Beratung & Einrichtung on-premises | UpTux", description: "Wir beraten zu lokaler KI und richten sie ein: Hardware-Auslegung, offene Sprachmodelle, RAG über Ihre Dokumente, Integration und Absicherung. Ihre Daten bleiben im Haus.", crumbs: ["Leistungen", "Lokale KI"] },
+    en: { title: "Local AI: consulting & on-premises setup | UpTux", description: "We advise on local AI and set it up: hardware sizing, open language models, RAG over your documents, integration and security. Your data stays in-house.", crumbs: ["Services", "Local AI"] },
   },
   cra: {
     priority: 0.8,
-    de: { title: "Cyber Resilience Act (CRA): Unterstützung für Maschinen- und Gerätehersteller | UpTux", description: "Was der CRA für Ihre Produkte bedeutet und wie Sie ihn umsetzen: CRA-Check, Risikobewertung, Security by Design, SBOM, Penetrationstests und Meldeprozess.", crumbs: ["Leistungen", "Cyber Resilience Act"] },
-    en: { title: "Cyber Resilience Act (CRA): support for machine and device makers | UpTux", description: "What the CRA means for your products and how to comply: CRA check, risk assessment, security by design, SBOM, penetration testing and vulnerability reporting.", crumbs: ["Services", "Cyber Resilience Act"] },
+    de: { title: "Cyber Resilience Act (CRA): Umsetzung für Hersteller | UpTux", description: "Was der CRA für Ihre Produkte bedeutet und wie Sie ihn umsetzen: CRA-Check, Risikobewertung, Security by Design, SBOM, Penetrationstests und Meldeprozess.", crumbs: ["Leistungen", "Cyber Resilience Act"] },
+    en: { title: "Cyber Resilience Act (CRA): manufacturer support | UpTux", description: "What the CRA means for your products and how to comply: CRA check, risk assessment, security by design, SBOM, penetration testing and vulnerability reporting.", crumbs: ["Services", "Cyber Resilience Act"] },
   },
   products: {
     priority: 0.7,
-    de: { title: "Produkte: Cloud PLC, Damper & AsamMdf | UpTux", description: "Software-Bausteine aus der Praxis: Cloud PLC als SPS-Runtime für Ihre IT, die C++17-Bibliothek Damper und AsamMdf zum Lesen von MDF4-Dateien in .NET.", crumbs: ["Produkte"] },
-    en: { title: "Products: Cloud PLC, Damper & AsamMdf | UpTux", description: "Software building blocks from real projects: Cloud PLC as a PLC runtime for your IT, the C++17 library Damper and AsamMdf for reading MDF4 files in .NET.", crumbs: ["Products"] },
+    de: { title: "Produkte: Protokoll-Stacks, Runtimes & Bibliotheken | UpTux", description: "Industrie-Software von UpTux: Stacks für OPC UA, SOME/IP und TwinCAT ADS, EtherCAT-Diagnose, Echtzeit-Runtimes wie Cloud PLC und taktora, Bibliotheken und HMI.", crumbs: ["Produkte"] },
+    en: { title: "Products: protocol stacks, runtimes & libraries | UpTux", description: "Industrial software by UpTux: OPC UA, SOME/IP and TwinCAT ADS stacks, EtherCAT diagnostics, real-time runtimes like Cloud PLC and taktora, libraries and HMI.", crumbs: ["Products"] },
   },
   cloudplc: {
     priority: 0.8,
@@ -54,7 +54,7 @@ const staticMeta: Record<StaticPageId, { priority: number } & Record<Lang, PageT
   },
   damper: {
     priority: 0.6,
-    de: { title: "Damper: modulare C++17-Bibliothek für Embedded-Software | UpTux", description: "Damper ist eine schlanke C++17-Bibliothek ohne externe Abhängigkeiten: Datenstrukturen, asynchrones I/O und Kryptografie für Embedded- und Unternehmenssoftware.", crumbs: ["Produkte", "Damper"] },
+    de: { title: "Damper: modulare C++17-Bibliothek für Embedded | UpTux", description: "Damper ist eine schlanke C++17-Bibliothek ohne externe Abhängigkeiten: Datenstrukturen, asynchrones I/O und Kryptografie für Embedded- und Unternehmenssoftware.", crumbs: ["Produkte", "Damper"] },
     en: { title: "Damper: modular C++17 library for embedded software | UpTux", description: "Damper is a lean C++17 library without external dependencies: data structures, asynchronous I/O and cryptography for embedded and enterprise software.", crumbs: ["Products", "Damper"] },
   },
   asammdf: {
@@ -181,9 +181,50 @@ export function structuredData(id: PageId, lang: Lang): object[] {
     const parent = (Object.keys(pageMeta) as PageId[]).find((p) => pageMeta[p][lang].crumbs?.at(-1) === name);
     items.push({ name, path: isLast ? paths[id][lang] : parent ? paths[parent][lang] : paths.home[lang] });
   });
-  return [{
+  const breadcrumbs = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: `${site.url}${it.path}` })),
-  }];
+  };
+  const page = pageEntity(id, lang);
+  return page ? [breadcrumbs, page] : [breadcrumbs];
+}
+
+// Pages describing a service we offer, marked up as schema.org Service.
+const servicePages: StaticPageId[] = ['retrofit', 'vision', 'pentest', 'localai', 'cra'];
+
+const provider = { '@id': organization['@id'], '@type': 'Organization', name: site.name, url: `${site.url}/` };
+
+/** Service or SoftwareApplication describing the subject of a page, if it has one. */
+function pageEntity(id: PageId, lang: Lang): object | null {
+  const { description, crumbs } = pageMeta[id][lang];
+  const url = `${site.url}${paths[id][lang]}`;
+  if ((servicePages as PageId[]).includes(id)) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: crumbs?.at(-1),
+      serviceType: crumbs?.at(-1),
+      description,
+      url,
+      inLanguage: lang,
+      provider,
+      areaServed: { '@type': 'Country', name: 'DE' },
+    };
+  }
+  const product = products.find((p) => id === `product:${p.slug}` || p.href?.[lang] === paths[id][lang]);
+  if (!product) return null;
+  const sameAs = product.links?.map((l) => l.url);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: product.name,
+    description,
+    url,
+    inLanguage: lang,
+    applicationCategory: product.group === 'hmi' ? 'BusinessApplication' : 'DeveloperApplication',
+    ...(product.tech && { keywords: product.tech.join(', ') }),
+    ...(sameAs?.length && { sameAs }),
+    publisher: provider,
+  };
 }
